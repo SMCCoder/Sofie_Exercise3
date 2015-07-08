@@ -3,3 +3,13 @@
 Add main CSS here
 
 */
+
+.chart rect {
+  fill: steelblue;
+}
+
+.chart text {
+  fill: white;
+  font: 8px sans-serif;
+  text-anchor: middle;
+}
