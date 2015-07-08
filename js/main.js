@@ -134,7 +134,7 @@ function type(d) {
   d.value = +d.value; // coerce to number
   return d;
 }
-
+//Where the modal is called
 var my_modal = new Modal("Button","length","Settings","Change the length.","Close","Length");
 my_modal.add_modal($("body"));
 
@@ -144,9 +144,45 @@ d3.select(this).transition()
     .style("fill", "red");
 });
 
+var random_values = function(d) {
+  for(d.name = 0; d.name < data.length; d.name++){
+  d.value = Math.random()*.1;
+}
+  /*var randomize = [
+    {name: "A",	       value: Math.random()*.1},
+    {name: "B",	       value: Math.random()*.1},
+    {name: "C",      	 value: Math.random()*.1},
+    {name: "D",	       value: Math.random()*.1},
+    {name: "E",	       value: Math.random()*.1},
+    {name: "F",      	 value: Math.random()*.1},
+    {name: "G",	       value: Math.random()*.1},
+    {name: "H",	       value: Math.random()*.1},
+    {name: "I",    	   value: Math.random()*.1},
+    {name: "J",	       value: Math.random()*.1},
+    {name: "K",    	   value: Math.random()*.1},
+    {name: "L",  	     value: Math.random()*.1},
+    {name: "M",      	 value: Math.random()*.1},
+    {name: "N",    	   value: Math.random()*.1},
+    {name: "O",	       value: Math.random()*.1},
+    {name: "P",	       value: Math.random()*.1},
+    {name: "Q",	       value: Math.random()*.1},
+    {name: "R",      	 value: Math.random()*.1},
+    {name: "S",	       value: Math.random()*.1},
+    {name: "T",	       value: Math.random()*.1},
+    {name: "U",      	 value: Math.random()*.1},
+    {name: "V",	       value: Math.random()*.1},
+    {name: "W",	       value: Math.random()*.1},
+    {name: "X",	       value: Math.random()*.1},
+    {name: "Y",      	 value: Math.random()*.1},
+    {name: "Z",	       value: Math.random()*.1}
+  ];*/
+return random_values;
+}
+
 $('div button:nth-child(2)').click(function() {
 
-  var barUpdate = bar.data(data2)
+//var randomize = random_values;
+  var barUpdate = bar.data(random_values(data))
     .transition()
     .duration(3000)
     .attr("transform", function(d) { return "translate(" + x(d.name) + ",0)"; });
