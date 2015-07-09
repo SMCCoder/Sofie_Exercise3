@@ -53,35 +53,6 @@ var data = [
   {name: "Z",	       value: .00074}
 ];
 
-var data2 = [
-  {name: "A",	       value: .13167},
-  {name: "B",	       value: .00992},
-  {name: "C",      	 value: .04782},
-  {name: "D",	       value: .02253},
-  {name: "E",	       value: .08702},
-  {name: "F",      	 value: .07288},
-  {name: "G",	       value: .05015},
-  {name: "H",	       value: .02094},
-  {name: "I",    	   value: .09866},
-  {name: "J",	       value: .02353},
-  {name: "K",    	   value: .01772},
-  {name: "L",  	     value: .02025},
-  {name: "M",      	 value: .08406},
-  {name: "N",    	   value: .03749},
-  {name: "O",	       value: .03507},
-  {name: "P",	       value: .08929},
-  {name: "Q",	       value: .00395},
-  {name: "R",      	 value: .03487},
-  {name: "S",	       value: .09127},
-  {name: "T",	       value: .06756},
-  {name: "U",      	 value: .02358},
-  {name: "V",	       value: .01178},
-  {name: "W",	       value: .07860},
-  {name: "X",	       value: .01550},
-  {name: "Y",      	 value: .02674},
-  {name: "Z",	       value: .00274}
-];
-
 var margin = {top: 20, right: 30, bottom: 30, left: 40},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -109,14 +80,12 @@ var chart = d3.select(".chart")
     x.domain(data.map(function(d) { return d.name; }));
     y.domain([0, d3.max(data, function(d) { return d.value; })]);
 
-  var barWidth = width / data.length;
-  //var barWidth = width / data2.length;
+var barWidth = width / data.length;
 
-  var bar = chart.selectAll("g")
-      .data(data)
-      //.data(data2)
-    .enter().append("g")
-      .attr("transform", function(d) { return "translate(" + x(d.name) + ",0)"; });
+var bar = chart.selectAll("g")
+    .data(data)
+  .enter().append("g")
+    .attr("transform", function(d) { return "translate(" + x(d.name) + ",0)"; });
 
   bar.append("rect")
       .attr("y", function(d) { return y(d.value); })
@@ -145,43 +114,15 @@ d3.select(this).transition()
 });
 
 var random_values = function(d) {
-  for(d.name = 0; d.name < data.length; d.name++){
-  d.value = Math.random()*.1;
-}
-  /*var randomize = [
-    {name: "A",	       value: Math.random()*.1},
-    {name: "B",	       value: Math.random()*.1},
-    {name: "C",      	 value: Math.random()*.1},
-    {name: "D",	       value: Math.random()*.1},
-    {name: "E",	       value: Math.random()*.1},
-    {name: "F",      	 value: Math.random()*.1},
-    {name: "G",	       value: Math.random()*.1},
-    {name: "H",	       value: Math.random()*.1},
-    {name: "I",    	   value: Math.random()*.1},
-    {name: "J",	       value: Math.random()*.1},
-    {name: "K",    	   value: Math.random()*.1},
-    {name: "L",  	     value: Math.random()*.1},
-    {name: "M",      	 value: Math.random()*.1},
-    {name: "N",    	   value: Math.random()*.1},
-    {name: "O",	       value: Math.random()*.1},
-    {name: "P",	       value: Math.random()*.1},
-    {name: "Q",	       value: Math.random()*.1},
-    {name: "R",      	 value: Math.random()*.1},
-    {name: "S",	       value: Math.random()*.1},
-    {name: "T",	       value: Math.random()*.1},
-    {name: "U",      	 value: Math.random()*.1},
-    {name: "V",	       value: Math.random()*.1},
-    {name: "W",	       value: Math.random()*.1},
-    {name: "X",	       value: Math.random()*.1},
-    {name: "Y",      	 value: Math.random()*.1},
-    {name: "Z",	       value: Math.random()*.1}
-  ];*/
-return random_values;
+  for(var i = 0; i < d.length; i++){
+    d[i].value = Math.random()*.1;
+};
+
+return d;
 }
 
 $('div button:nth-child(2)').click(function() {
 
-//var randomize = random_values;
   var barUpdate = bar.data(random_values(data))
     .transition()
     .duration(3000)
