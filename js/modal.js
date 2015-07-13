@@ -50,6 +50,7 @@ define([
                                      .attr("data-dismiss","modal");
 
     this.change_color = $("<button>").addClass("btn btn-primary")
+                                    .attr("id", "test_button")
                                      .attr("type","button");
 
   };

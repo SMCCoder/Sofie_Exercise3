@@ -19,12 +19,27 @@ requirejs([
     'jquery',
     'd3',
     'bootstrap',
-    'js/modal'
-],function($, d3, bootstrap, Modal) {
+    'js/modal',
+    'js/model/network',
+    'js/views/network'
+],function($, d3, bootstrap, Modal, NetworkModel, NetworkView) {
 
 this.chart = $("<svg>").addClass("chart");
 
-var data = [
+//Where the modal is called
+var my_modal = new Modal("Button","length","Settings","Change the length.","Close","Length");
+my_modal.add_modal($("body"));
+
+var network_model = new NetworkModel();
+
+  var network_view = new NetworkView({ model: network_model });
+
+  network_view.draw();
+
+
+
+
+/*var data = [
   {name: "A",	       value: .08167},
   {name: "B",	       value: .01492},
   {name: "C",      	 value: .02782},
@@ -139,6 +154,6 @@ $('div button:nth-child(2)').click(function() {
     .attr("dy", ".75em")
     .text(function(d) { return d.value; });
 
-});
+});*/
 
 });
