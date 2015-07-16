@@ -1,26 +1,10 @@
-define([
+/*define([
     'jquery',
     'd3',
     'bootstrap'
 ],function($, d3, bootstrap) {
 
-  var Modal = function(headerText, buttonText, iconText, closeText, titleText, bodyText, closeButtonText, changeText){
-
-    //glyphicon glyphicon-cog
-    this.headerText = headerText;
-    this.buttonText = buttonText;
-    this.closeText = closeText;
-    this.titleText = titleText;
-    this.bodyText = bodyText;
-    this.closeButtonText = closeButtonText;
-    this.changeText = changeText;
-    this.iconText = iconText;
-
-    this.settings = $("<button>").addClass("btn btn-primary btn-lg")
-                                 .attr("type","button")
-                                 .attr("data-toggle","modal")
-                                 .attr("data-target","#basicModal");
-
+  var Organize = function(/*titleChart*closeText, titleText, bodyText, closeButtonText, changeText){
     this.window = $("<div>").addClass("modal fade")
                             .attr("id","basicModal")
                             .attr("tabindex","-1")
@@ -59,27 +43,26 @@ define([
     this.icon = $("<span>").addClass("glyphicon glyphicon-cog")
                            .attr("aria-hidden","true");
 
-    this.page_header = $("<div>").addClass("page-header");
+    /*this.titleChart = titleChart;
 
-    this.header_text = $("<h2>");
+    this.window = $("<div>").addClass("modal fade")
+                            .attr("id","basicModal")
+                            .attr("tabindex","-1")
+                            .attr("role","dialog")
+                            .attr("aria-labelledby","basicModal")
+                            .attr("aria-hidden","true");
 
+    this.chart_dialog = $("<div>").addClass("modal-dialog");
+
+    this.chart_content = $("<div>").addClass("modal-content");
+
+    this.chart_header = $("<div>").addClass("model-header");
+
+    this.chart_title = $("<h4>").addClass("modal-title")
+                                .attr("id","myModalLabel");*
   };
 
-  Modal.prototype.add_modal = function(element){
-
-    // Add modal to page.
-    element.append(this.page_header);
-
-    this.settings.append(this.icon);
-    this.icon.text(this.iconText);
-
-    this.page_header.append(this.settings);
-    this.page_header.append(this.header_text);
-    this.header_text.text(this.headerText)
-
-    this.settings.after(this.window);
-    //this.settings.text(this.buttonText);
-
+  Organize.prototype.add_organize = function(element) {
     this.window.append(this.modal_dialog);
     this.modal_dialog.append(this.modal_content);
 
@@ -101,9 +84,14 @@ define([
 
     this.close_button.text(this.closeButtonText);
     this.change_color.text(this.changeText);
+    /*element.append(this.window);
 
+    this.window.append(this.chart_dialog);
+    this.chart_dialog.append(this.chart_content);
+    this.chart_content.append(this.chart_header);
+    this.chart_title.text(this.titleChart);*
   };
 
-  return Modal;
+  return Organize;
 
-});
+});*/

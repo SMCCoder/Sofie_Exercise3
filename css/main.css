@@ -13,3 +13,14 @@ Add main CSS here
   font: 8px sans-serif;
   text-anchor: middle;
 }
+
+.page-header {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+button {
+  color: red;
+}

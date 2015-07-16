@@ -1,10 +1,14 @@
+/*
+  The model holds the data for the view
+*/
+
 define ([
   "jquery",
   "d3",
   "backbone"
 ], function($, d3, backbone) {
 
-  var NetworkModel = Backbone.Model.extend({
+  var GraphModel = Backbone.Model.extend({
 
     defaults: {
         "data": [],
@@ -45,5 +49,5 @@ define ([
 
   });
 
-  return NetworkModel;
+  return GraphModel;
 });
