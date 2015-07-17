@@ -17,6 +17,7 @@ define([
 
       sizeChart: function(){
         this.margin = {top: 20, right: 30, bottom: 30, left: 40},
+            //console.log(document.
             width = 960 - this.margin.left - this.margin.right,
             height = 500 - this.margin.top - this.margin.bottom;
       },
@@ -28,7 +29,8 @@ define([
 
         var yAxis = d3.svg.axis()
             .scale(this.y)
-            .orient("left");
+            .orient("left")
+            .ticks(10, "%");
       },
 
       scale: function(){
@@ -55,25 +57,55 @@ define([
       },
 
       draw_bars: function() {
-        // Varible is needed to fix the scope
+
         var scope = this;
 
-        this.bar = this.chart.selectAll("g")
-            .data(this.model.get("data"))
-          .enter().append("g")
-            .attr("transform", function(d) { return "translate(" + scope.x(d.name) + ",0)"; });
+        this.xAxis = d3.svg.axis()
+            .scale(this.x)
+            .orient("bottom");
+
+        this.yAxis = d3.svg.axis()
+            .scale(this.y)
+            .orient("left")
+            .ticks(10, "%");
+
+        this.chart.selectAll(".bar")
+            .data(scope.model.get("data"))
+          .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return scope.x(d.name); })
+            .attr("y", function(d) { return scope.y(d.value); })
+            .attr("height", function(d) { return height - scope.y(d.value); })
+            .attr("width", scope.x.rangeBand())
+
+        this.chart.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(this.xAxis);
+
+        this.chart.append("g")
+            .attr("class", "y axis")
+            .call(this.yAxis);
+
+        /*
+          // Varible is needed to fix the scope
+          var scope = this;
+
+          this.bar = this.chart.selectAll("g")
+              .data(this.model.get("data"))
+            .enter().append("g")
+              .attr("transform", function(d) { return "translate(" + scope.x(d.name) + ",0)"; });
 
           this.bar.append("rect")
               .attr("y", function(d) { return scope.y(d.value); })
               .attr("height", function(d) { return height - scope.y(d.value); })
-              .attr("width", scope.x.rangeBand());
-
+              .attr("width", scope.x.rangeBand())
 
           this.bar.append("text")
               .attr("x", scope.x.rangeBand() / 2)
               .attr("y", function(d) { return scope.y(d.value) + 3; })
               .attr("dy", ".75em")
-              .text(function(d) { return d.value; });
+              .text(function(d) { return d.value; });*/
       },
 
       type: function(d) {
@@ -82,10 +114,13 @@ define([
       },
 
       bar_color: function() {
-        $('.chart rect').hover(function() {
+        $('.bar').hover(function() {
+          $("[data-toggle='popover']").popover('show');
         d3.select(this).transition()
-            .each("start", function() { d3.selectAll('.chart rect').style("fill", "steelblue"); })
-            .style("fill", "red");
+            .each("start", function() { d3.selectAll('.bar'); })
+            .attr("data-toggle","popover")
+            .attr("title","Popover title")
+            .attr("data-content", "And here's some amazing content.");
         });
       },
 
@@ -103,28 +138,48 @@ define([
       var scope = this;
 
       $('#test_button').click(function() {
-          var barUpdate = scope.bar.data(random_values(scope.model.get("data")))
+          var barUpdate = scope.chart.data(random_values(scope.model.get("data")))
             .transition()
             .duration(2000)
-            .attr("transform", function(d) { return "translate(" + scope.x(d.name) + ",0)"; });
+            .attr("transform", function(d) { return "translate(" + scope.x(d.name) + ",0)"; })
+            .attr("transform", function(d) { return "translate(40,20)"; });
 
-          barUpdate.select("rect")
+          barUpdate.selectAll("rect")
             .attr("y", function(d) { return scope.y(d.value); })
             .attr("height", function(d) { return height - scope.y(d.value); })
             .attr("width", scope.x.rangeBand());
+
+          /*barUpdate.select("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")");
 
           barUpdate.select("text")
             .attr("x", scope.x.rangeBand() / 2)
             .attr("y", function(d) { return scope.y(d.value) + 3; })
             .attr("dy", ".75em")
-            .text(function(d) { return d.value; });
+            .text(function(d) { return d.value; });*/
       });
 
     },
 
-    chartHeader: function(){
+    tableChart: function(){
+      /*this.table = $("<table>").addClass("table table-striped");
+      this.tableBody = $("<tbody>");
+      this.tableHeader = $("<thead>");
+      this.tableHeaderText = $("<th>").attr("colspan","2");
+      this.tableRow = $("<tr>");
+      this.tableRowName = $("<td>").addClass("name");
+      this.tableRowValue = $("<td>").addClass("value");
 
-      
+      this.table.append(this.tableBody);
+      this.tableBody.append(this.tableHeader);
+      this.tableHeader.append(this.tableHeaderText);
+      this.tableHeaderText.text("Data");
+      this.tableHeaderText.after(this.tableRow);
+      this.tableRow.append(this.tableRowName);
+      this.tableRowName.text("A");
+      this.tableRowName.after(this.tableRowValue);
+      this.tableRowValue.text("3");*/
     },
 
     draw: function(){
@@ -137,7 +192,7 @@ define([
       this.model.set(this.type(this.model.get("data")));
       this.bar_color();
       this.values();
-      this.chartHeader();
+      this.tableChart();
     },
 
 });

@@ -4,14 +4,28 @@ Add main CSS here
 
 */
 
-.chart rect {
+.bar {
   fill: steelblue;
+  border-top-left-radius: 5px;
 }
 
-.chart text {
-  fill: white;
-  font: 8px sans-serif;
-  text-anchor: middle;
+.bar:hover {
+  fill: brown;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
 }
 
 .page-header {
@@ -21,6 +35,38 @@ Add main CSS here
     margin-right: 10px;
 }
 
-button {
-  color: red;
+#b {
+  float: right;
+  margin-top: -50px;
+  margin-right: 70px;
 }
+
+table {
+  border-radius: 10%;
+}
+
+td{
+  border: 1px solid lightgray;
+}
+
+th {
+  border:1px solid lightgray;
+  text-align: center;
+}
+.name {
+  color: white;
+  background-color: steelblue;
+  width:150px;
+  text-align: center;
+}
+
+.value {
+  color: black;
+  background-color: white;
+  width:150px;
+  text-align: center;
+}
+
+/*.letters:hover {
+  background-color: brown;
+}*/
