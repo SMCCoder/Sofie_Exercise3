@@ -19,7 +19,7 @@ requirejs([
     'jquery',
     'd3',
     'bootstrap',
-    'js/views/modal',
+    'js/modal',
     'js/chart',
     'js/model/graph',
     'js/views/graph'

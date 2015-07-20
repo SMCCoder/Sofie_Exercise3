@@ -114,13 +114,13 @@ define([
       },
 
       bar_color: function() {
+        $("[data-toggle='popover']").popover('show');
         $('.bar').hover(function() {
-          $("[data-toggle='popover']").popover('show');
-        d3.select(this).transition()
-            .each("start", function() { d3.selectAll('.bar'); })
-            .attr("data-toggle","popover")
-            .attr("title","Popover title")
-            .attr("data-content", "And here's some amazing content.");
+          d3.select(this).transition()
+              .each("start", function() { d3.selectAll('.bar'); })
+              .attr("data-toggle","popover")
+              .attr("title","Popover title")
+              .attr("data-content", "And here's some amazing content.");
         });
       },
 
