@@ -2,7 +2,16 @@ define([
     'jquery',
     'd3',
     'bootstrap',
+    'backbone'
 ],function($, d3, bootstrap, backbone) {
+
+  var ModalView = backbone.View.extend({
+
+    initialize: function(){
+      this.draw();
+    },
+
+    draw_modal: function(){
 
   var Modal = function(headerText, buttonText, iconText, closeText,
                        titleText, bodyText, closeButtonText,
@@ -145,5 +154,17 @@ define([
   };
 
   return Modal;
+},
+
+draw: function(){
+  this.draw_modal();
+},
+
+});
+
+return ModalView;
+
+var my_modal = new Modal("Bar Graph","Button", " ", "length", "Settings","Change the length.", "Close","Length");
+my_modal.add_modal($(".page-header"));
 
 });

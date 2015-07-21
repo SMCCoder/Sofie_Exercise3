@@ -19,15 +19,14 @@ requirejs([
     'jquery',
     'd3',
     'bootstrap',
-    'js/modal',
-    'js/chart',
+    'js/views/modal',
     'js/model/graph',
     'js/views/graph'
-],function($, d3, bootstrap, Modal, Organize, GraphModel, GraphView) {
+],function($, d3, bootstrap, Modal, GraphModel, GraphView) {
 
 //Calls the modal
-var my_modal = new Modal("Bar Graph","Button", " ", "length", "Settings","Change the length.", "Close","Length");
-my_modal.add_modal($(".page-header"));
+//var my_modal = new Modal("Bar Graph","Button", " ", "length", "Settings","Change the length.", "Close","Length");
+//my_modal.add_modal($(".page-header"));
 
 /*var charting = function(headerText){
   this.headerText = headerText;
@@ -45,7 +44,7 @@ var my_chart = new charting();
 my_chart.add_charting($(".container"));*/
 
 //Calls the model
-var graph_model = new GraphModel();
+var graph_model = new GraphModel(Modal);
 
 //Calls the view
 var graph_view = new GraphView({ model: graph_model });
