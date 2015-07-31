@@ -154,6 +154,10 @@ define([
   };
 
   return Modal;
+
+  var my_modal = new Modal("Bar Graph","Button", " ", "length", "Settings","Change the length.", "Close","Length");
+  my_modal.add_modal($(".page-header"));
+
 },
 
 draw: function(){
@@ -163,8 +167,5 @@ draw: function(){
 });
 
 return ModalView;
-
-var my_modal = new Modal("Bar Graph","Button", " ", "length", "Settings","Change the length.", "Close","Length");
-my_modal.add_modal($(".page-header"));
 
 });

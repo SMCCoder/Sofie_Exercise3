@@ -180,6 +180,64 @@ define([
       this.tableRowName.text("A");
       this.tableRowName.after(this.tableRowValue);
       this.tableRowValue.text("3");*/
+
+      var scope = this;
+
+        // Create dataMenu object for dropdown menu.
+        var dataMenu = function() {}
+
+        dataMenu.prototype.add_element = function(element) {
+            //
+            //Create an element in dropdown.
+            //
+            // Construct dropdown label.
+            label = $("<tr>").attr("id", "dropdown-" + element)
+            //.attr("href","#")
+            .text(element);
+
+            // Construct html element here
+            html_el = $("<td>").append(label)
+            return html_el;
+        }
+
+        dataMenu.prototype.build_list = function(parent, elements){
+            /*
+            Append html list elements to parent html element.
+
+            Args:
+            ----
+            parent: string
+            html-element id for appending list.
+            elements: array of strings
+            array of text to append html list and make clickable.
+            */
+            for (var e = 0; e < elements.length; e++) {
+                dropdown = this.add_element(elements[e]);
+                $(parent).append(dropdown);
+                //dropdown.click(e, click_reference);
+            }
+        }
+
+        var get_refs = function(key){
+            //
+            //Get dataset's refs.
+            //
+            var datasets = scope.model.get("data");
+            var refs = [];
+
+            for (var i = 0; i < datasets.length; i++) {
+                refs.push(datasets[i].name);
+                refs.push(datasets[i].value);
+            }
+            return refs;
+        }
+
+            var datasets = scope.model.get("data");
+            var refs = get_refs(datasets);
+
+            var drops = new dataMenu();
+            drops.build_list("#tablebody", refs);
+
     },
 
     draw: function(){
