@@ -25,7 +25,7 @@ requirejs([
 ],function($, d3, bootstrap, Modal, GraphModel, GraphView) {
 
 //Calls the modal
-//var my_modal = new Modal("Bar Graph","Button", " ", "length", "Settings","Change the length.", "Close","Length");
+var my_modal = new Modal();
 //my_modal.add_modal($(".page-header"));
 
 /*var charting = function(headerText){
@@ -44,7 +44,7 @@ var my_chart = new charting();
 my_chart.add_charting($(".container"));*/
 
 //Calls the model
-var graph_model = new GraphModel(Modal);
+var graph_model = new GraphModel();
 
 //Calls the view
 var graph_view = new GraphView({ model: graph_model });

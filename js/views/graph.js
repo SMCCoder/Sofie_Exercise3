@@ -41,7 +41,18 @@ define([
             .range([height, 0]);
       },
 
+      draw_tooltip: function (){
+
+      },
+
       chart: function(){
+          /*var tip = d3.tip()
+              .attr('class', 'd3-tip')
+              .offset([-10, 0])
+              .html(function(d) {
+                return "<strong>Frequency:</strong> <span style='color:red'>" + d.frequency + "</span>";
+            })*/
+
         this.chart = d3.select(".chart")
             .attr("width", width + this.margin.left + this.margin.right)
             .attr("height", height + this.margin.top + this.margin.bottom)
@@ -50,6 +61,8 @@ define([
 
             this.x.domain(this.model.get("data").map(function(d) { return d.name; }));
             this.y.domain([0, d3.max(this.model.get("data"), function(d) { return d.value; })]);
+
+        //this.chart.call(tip);
       },
 
       bar_width: function(){
@@ -114,14 +127,14 @@ define([
       },
 
       bar_color: function() {
-        $("[data-toggle='popover']").popover('show');
+        /*$("[data-toggle='popover']").popover('show');
         $('.bar').hover(function() {
           d3.select(this).transition()
               .each("start", function() { d3.selectAll('.bar'); })
               .attr("data-toggle","popover")
               .attr("title","Popover title")
               .attr("data-content", "And here's some amazing content.");
-        });
+        });*/
       },
 
       values: function() {
@@ -186,21 +199,27 @@ define([
         // Create dataMenu object for dropdown menu.
         var dataMenu = function() {}
 
-        dataMenu.prototype.add_element = function(element) {
+        dataMenu.prototype.add_element = function(element, values) {
             //
             //Create an element in dropdown.
             //
+
+
             // Construct dropdown label.
-            label = $("<tr>").attr("id", "dropdown-" + element)
+            label = $("<td>").attr("id", "tablerow-" + element)
             //.attr("href","#")
             .text(element);
 
+            value = $("<td>").attr("id", "tablerow-" + values)
+            //.attr("href","#")
+            .text(values);
+
             // Construct html element here
-            html_el = $("<td>").append(label)
+            html_el = $("<tr>").append(label).append(value)
             return html_el;
         }
 
-        dataMenu.prototype.build_list = function(parent, elements){
+        dataMenu.prototype.build_list = function(parent, elements, values){
             /*
             Append html list elements to parent html element.
 
@@ -211,9 +230,14 @@ define([
             elements: array of strings
             array of text to append html list and make clickable.
             */
+            console.log(parent);
+            console.log(elements);
+            console.log(values);
             for (var e = 0; e < elements.length; e++) {
-                dropdown = this.add_element(elements[e]);
+                dropdown = this.add_element(elements[e], values[e]);
                 $(parent).append(dropdown);
+                //console.log(values[e]);
+                //console.log(this.add_element(elements[e]));
                 //dropdown.click(e, click_reference);
             }
         }
@@ -227,16 +251,32 @@ define([
 
             for (var i = 0; i < datasets.length; i++) {
                 refs.push(datasets[i].name);
+                //refs.push(datasets[i].value);
+            }
+            return refs;
+        }
+
+        var get_values = function(key){
+            //
+            //Get dataset's refs.
+            //
+            var datasets = scope.model.get("data");
+            var refs = [];
+
+            for (var i = 0; i < datasets.length; i++) {
                 refs.push(datasets[i].value);
+                //refs.push(datasets[i].value);
             }
             return refs;
         }
 
             var datasets = scope.model.get("data");
             var refs = get_refs(datasets);
+            var values = get_values(datasets);
+            //console.log(values);
 
             var drops = new dataMenu();
-            drops.build_list("#tablebody", refs);
+            drops.build_list("#tablebody", refs, values);
 
     },
 
