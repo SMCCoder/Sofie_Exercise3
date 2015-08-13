@@ -100,6 +100,10 @@ td {
     width:300px;
 }
 
+.placeholder {
+    color: black;
+}
+
 /*.letters:hover {
   background-color: brown;
 }*/

@@ -203,16 +203,19 @@ define([
             //
             //Create an element in dropdown.
             //
-
+            //button = $("<button>").
+            input = $("<input>").attr("type", "text")
+                                .attr("value", values)
+                                .attr("style", "border: none; background-color: rgba(255, 255, 255, 0.0)");
 
             // Construct dropdown label.
             label = $("<td>").attr("id", "tablerow-" + element)
             //.attr("href","#")
             .text(element);
 
-            value = $("<td>").attr("id", "tablerow-" + values)
+            value = $("<td>").attr("id", "tablerow-" + values).append(input);
             //.attr("href","#")
-            .text(values);
+            //.text(values);
 
             // Construct html element here
             html_el = $("<tr>").append(label).append(value)
@@ -280,6 +283,84 @@ define([
 
     },
 
+    modal: function() {
+        console.log("modal");
+
+        var Modal = function() {}
+
+          Modal.prototype.add_element = function() {
+
+          this.settings = $("<button>").addClass("btn btn-primary btn-lg")
+                                       .attr("type","button")
+                                       .attr("data-toggle","modal")
+                                       .attr("data-target","#basicModal")
+                                       .attr("id","b")
+                                       .append(this.icon)
+                                       .after(this.window);
+
+          this.modal_dialog = $("<div>").addClass("modal-dialog")
+                                        .append(this.modal_content);
+
+          this.modal_content = $("<div>").addClass("modal-content")
+                                         .append(this.modal_header);
+
+          this.modal_header = $("<div>").addClass("modal-header")
+                                        .after(this.modal_body)
+                                        .append(this.close);
+
+          // This is the close button for the modal window
+          this.close = $("<button>").addClass("close")
+                                    .attr("data-dismiss","modal")
+                                    .attr("aria-hidden","true")
+                                    .text("x")
+                                    .after(this.modal_title);
+
+          this.modal_title = $("<h4>").addClass("modal-title")
+                                      .attr("id","myModalLabel")
+                                      .text("Title");
+
+          this.modal_body = $("<div>").addClass("modal-body")
+                                      .after(this.modal_footer)
+                                      .text("Body");
+
+          this.modal_footer = $("<div>").addClass("modal-footer")
+                                        .append(this.close_button);
+
+          this.close_button = $("<button>").addClass("btn btn-default")
+                                           .attr("type","button")
+                                           .attr("data-dismiss","modal")
+                                           .after(this.change_color);
+
+          this.change_color = $("<button>").addClass("btn btn-primary")
+                                          .attr("id", "test_button")
+                                           .attr("type","button")
+                                           .text("Close");
+
+          this.icon = $("<span>").addClass("glyphicon glyphicon-cog")
+                                 .attr("aria-hidden","true")
+                                 .text("Open");
+
+         this.window = $("<div>").addClass("modal fade")
+                                 .attr("id","basicModal")
+                                 .attr("tabindex","-1")
+                                 .attr("role","dialog")
+                                 .attr("aria-labelledby","basicModal")
+                                 .attr("aria-hidden","true")
+                                 .append(this.modal_dialog);
+
+         return this.window;
+
+        }
+
+        Modal.prototype.add_modal = function(element){
+
+          $(element).append(this.element);
+        }
+
+        var my_modal = new Modal();
+        my_modal.add_modal(".page_header");
+    },
+
     draw: function(){
       this.sizeChart();
       this.axis();
@@ -291,6 +372,7 @@ define([
       this.bar_color();
       this.values();
       this.tableChart();
+      this.modal();
     },
 
 });
