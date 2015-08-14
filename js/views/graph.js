@@ -100,25 +100,6 @@ define([
             .attr("class", "y axis")
             .call(this.yAxis);
 
-        /*
-          // Varible is needed to fix the scope
-          var scope = this;
-
-          this.bar = this.chart.selectAll("g")
-              .data(this.model.get("data"))
-            .enter().append("g")
-              .attr("transform", function(d) { return "translate(" + scope.x(d.name) + ",0)"; });
-
-          this.bar.append("rect")
-              .attr("y", function(d) { return scope.y(d.value); })
-              .attr("height", function(d) { return height - scope.y(d.value); })
-              .attr("width", scope.x.rangeBand())
-
-          this.bar.append("text")
-              .attr("x", scope.x.rangeBand() / 2)
-              .attr("y", function(d) { return scope.y(d.value) + 3; })
-              .attr("dy", ".75em")
-              .text(function(d) { return d.value; });*/
       },
 
       type: function(d) {
@@ -139,18 +120,21 @@ define([
 
       values: function() {
 
+        var scope = this;
+
         // Method is passed in for barUpdate
         var random_values = function(d) {
           for(var i = 0; i < d.length; i++){
             n =  Math.random()*.1
             d[i].value = Number(n.toFixed(5));
           };
+          //console.log(d);
+          //scope.tableChart(d);
           return d;
         }
 
-      var scope = this;
-
-      $('#test_button').click(function() {
+      $('#test_button').click(/*random_values(scope.model.get("data")), */function() {
+          //console.log(random_values(scope.model.get("data")));
           var barUpdate = scope.chart.data(random_values(scope.model.get("data")))
             .transition()
             .duration(2000)
@@ -162,39 +146,18 @@ define([
             .attr("height", function(d) { return height - scope.y(d.value); })
             .attr("width", scope.x.rangeBand());
 
-          /*barUpdate.select("g")
-          .attr("class", "x axis")
-          .attr("transform", "translate(0," + height + ")");
+          //scope.tableChart(random_values(scope.model.get("data")));
 
-          barUpdate.select("text")
-            .attr("x", scope.x.rangeBand() / 2)
-            .attr("y", function(d) { return scope.y(d.value) + 3; })
-            .attr("dy", ".75em")
-            .text(function(d) { return d.value; });*/
+          //scope.table_update(random_values(scope.model.get("data")));
       });
 
-    },
+      //random_values(this.model.get("data"));
 
-    tableChart: function(){
-      /*this.table = $("<table>").addClass("table table-striped");
-      this.tableBody = $("<tbody>");
-      this.tableHeader = $("<thead>");
-      this.tableHeaderText = $("<th>").attr("colspan","2");
-      this.tableRow = $("<tr>");
-      this.tableRowName = $("<td>").addClass("name");
-      this.tableRowValue = $("<td>").addClass("value");
+    /*},
 
-      this.table.append(this.tableBody);
-      this.tableBody.append(this.tableHeader);
-      this.tableHeader.append(this.tableHeaderText);
-      this.tableHeaderText.text("Data");
-      this.tableHeaderText.after(this.tableRow);
-      this.tableRow.append(this.tableRowName);
-      this.tableRowName.text("A");
-      this.tableRowName.after(this.tableRowValue);
-      this.tableRowValue.text("3");*/
+    tableChart: function(d){*/
 
-      var scope = this;
+      //var scope = this;
 
         // Create dataMenu object for dropdown menu.
         var dataMenu = function() {}
@@ -203,19 +166,22 @@ define([
             //
             //Create an element in dropdown.
             //
-            //button = $("<button>").
-            input = $("<input>").attr("type", "text")
+            //console.log(values +1);
+            //values = 2;
+
+            $("#test_button").click(function() {
+                console.log(label);
+            });
+
+            this.input = $("<input>").attr("type", "text")
                                 .attr("value", values)
                                 .attr("style", "border: none; background-color: rgba(255, 255, 255, 0.0)");
 
             // Construct dropdown label.
             label = $("<td>").attr("id", "tablerow-" + element)
-            //.attr("href","#")
             .text(element);
 
-            value = $("<td>").attr("id", "tablerow-" + values).append(input);
-            //.attr("href","#")
-            //.text(values);
+            value = $("<td>").attr("id", "tablerow-" + values).append(this.input);
 
             // Construct html element here
             html_el = $("<tr>").append(label).append(value)
@@ -223,25 +189,14 @@ define([
         }
 
         dataMenu.prototype.build_list = function(parent, elements, values){
-            /*
-            Append html list elements to parent html element.
+            //
+            //Append html list elements to parent html element.
+            //
 
-            Args:
-            ----
-            parent: string
-            html-element id for appending list.
-            elements: array of strings
-            array of text to append html list and make clickable.
-            */
-            console.log(parent);
-            console.log(elements);
-            console.log(values);
             for (var e = 0; e < elements.length; e++) {
+                //console.log(random_values(scope.model.get("data")));
                 dropdown = this.add_element(elements[e], values[e]);
                 $(parent).append(dropdown);
-                //console.log(values[e]);
-                //console.log(this.add_element(elements[e]));
-                //dropdown.click(e, click_reference);
             }
         }
 
@@ -254,7 +209,6 @@ define([
 
             for (var i = 0; i < datasets.length; i++) {
                 refs.push(datasets[i].name);
-                //refs.push(datasets[i].value);
             }
             return refs;
         }
@@ -268,25 +222,33 @@ define([
 
             for (var i = 0; i < datasets.length; i++) {
                 refs.push(datasets[i].value);
-                //refs.push(datasets[i].value);
+
+                $("#test_button").click(function(){
+                    refs.push(3);
+                });
             }
+
             return refs;
         }
 
             var datasets = scope.model.get("data");
-            var refs = get_refs(datasets);
-            var values = get_values(datasets);
+
+            this.refs = get_refs(datasets);
+            this.values = get_values(datasets);
             //console.log(values);
 
             var drops = new dataMenu();
-            drops.build_list("#tablebody", refs, values);
+            drops.build_list("#tablebody", this.refs, this.values);
 
     },
 
-    modal: function() {
-        console.log("modal");
+    table_update: function() {
+         console.log("update");
+    },
 
-        var Modal = function() {}
+    modal: function() {
+
+        /*var Modal = function() {}
 
           Modal.prototype.add_element = function() {
 
@@ -352,13 +314,13 @@ define([
 
         }
 
-        Modal.prototype.add_modal = function(element){
+        Modal.prototype.build_modal = function(element){
 
           $(element).append(this.element);
         }
 
         var my_modal = new Modal();
-        my_modal.add_modal(".page_header");
+        my_modal.build_modal(".page_header");*/
     },
 
     draw: function(){
@@ -371,8 +333,8 @@ define([
       this.model.set(this.type(this.model.get("data")));
       this.bar_color();
       this.values();
-      this.tableChart();
       this.modal();
+      //this.tableChart();
     },
 
 });

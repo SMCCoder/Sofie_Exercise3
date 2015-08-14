@@ -3,6 +3,23 @@
 Add main CSS here
 
 */
+body {
+  position: relative;
+}
+
+.scrollspy-example {
+    /*height: 200px;*/
+}
+
+.bs-example {
+    /*height: 200px;*/
+}
+
+#dimension {
+    height: 300px;
+    width:500px;
+    background-color: blue;
+}
 
 .bar {
   fill: steelblue;

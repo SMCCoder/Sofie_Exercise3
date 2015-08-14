@@ -18,36 +18,51 @@
       <div id="1" class="container">
         <div id="ph" class="page-header">
           <h2>Bar Graph</h2>
+
+          <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+              </div>
+              <div class="modal-body" id="mod-body">
+
+                  <div style="height:300px; width:350px; border:1px solid #ccc; overflow:auto;">
+                      <table id="table1" class="table table-striped">
+                        <tbody id="tablebody">
+                               <thead>
+                               <th colspan="1">Name</th>
+                               <th colspan="1">Value</th>
+                               </thead>
+                               <tr>
+                               </tr>
+                          </tbody>
+                     </table>
+                 </div>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="test_button">Change</button>
+            </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div id="2" class="container">
         <svg class="chart"></svg>
       </div>
 
-
-      <table id="table1" class="table table-striped">
-        <tbody id="tablebody">
-               <thead>
-               <th colspan="1">Name</th>
-               <th colspan="1">Value</th>
-               </thead>
-
-               <tr>
-                  <td class = "letters">a</td>
-                  <td><input style="border: none; background-color: yellow;" type="text" value="4"></input></td>
-               </tr>
-
-               <!--<tr>
-                  <td class = "letters">b</td>
-                  <td>2</td>
-               </tr>
-
-               <tr>
-                  <td class = "letters">c</td>
-                  <td>2</td>
-              </tr>-->
-          </tbody>
-     </table>
+      </div>
 
     </body>
 
