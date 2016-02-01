@@ -20,7 +20,7 @@
           <h2>Bar Graph</h2>
 
           <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        <button type="button" class="btn btn-primary btn-lg" id="modalButton" data-toggle="modal" data-target="#myModal">
           <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
         </button>
 
@@ -34,10 +34,10 @@
               </div>
               <div class="modal-body" id="mod-body">
 
-                  <div style="height:300px; width:350px; border:1px solid #ccc; overflow:auto;">
-                      <table id="table1" class="table table-striped">
+                  <div id="tableScroller" style="height:300px; width:500px; border:1px solid #ccc; overflow:auto; border-radius: 10px;">
+                      <table id="table1" class="table table-hover">
                         <tbody id="tablebody">
-                               <thead>
+                               <thead id="tableHeader">
                                <th colspan="1">Name</th>
                                <th colspan="1">Value</th>
                                </thead>

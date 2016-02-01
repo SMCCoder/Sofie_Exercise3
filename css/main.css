@@ -121,6 +121,22 @@ td {
     color: black;
 }
 
+#modalButton {
+  margin-top: -47px;
+  float:right;
+}
+
+#tableHeader {
+  background-color: steelblue;
+  color: white;
+}
+
+#tableScroller {
+/*  -webkit-box-shadow: inset 9px -8px 16px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 9px -8px 16px -4px rgba(0,0,0,0.75);
+box-shadow: inset 9px -8px 16px -4px rgba(0,0,0,0.75);*/
+}
+
 /*.letters:hover {
   background-color: brown;
 }*/

@@ -170,18 +170,22 @@ define([
             //values = 2;
 
             $("#test_button").click(function() {
-                console.log(label);
+                //console.log(label);
             });
 
-            this.input = $("<input>").attr("type", "text")
+            this.valueInput = $("<input>").attr("type", "text")
                                 .attr("value", values)
                                 .attr("style", "border: none; background-color: rgba(255, 255, 255, 0.0)");
 
-            // Construct dropdown label.
-            label = $("<td>").attr("id", "tablerow-" + element)
-            .text(element);
+            this.elementInput = $("<input>").attr("type", "text")
+                                .attr("value", element)
+                                .attr("style", "border: none; background-color: rgba(255, 255, 255, 0.0)");
 
-            value = $("<td>").attr("id", "tablerow-" + values).append(this.input);
+            // Construct dropdown label.
+            label = $("<td>").attr("id", "tablerow-" + element).append(this.elementInput);
+            //.text(element);
+
+            value = $("<td>").attr("id", "tablerow-" + values).append(this.valueInput);
 
             // Construct html element here
             html_el = $("<tr>").append(label).append(value)
