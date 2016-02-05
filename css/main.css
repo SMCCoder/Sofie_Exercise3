@@ -93,6 +93,7 @@ table {
 
 td{
   border: 1px solid lightgray;
+  width:100px;
 }
 
 th {
@@ -113,10 +114,6 @@ th {
   text-align: center;
 }
 
-td {
-    width:300px;
-}
-
 .placeholder {
     color: black;
 }
@@ -129,6 +126,21 @@ td {
 #tableHeader {
   background-color: steelblue;
   color: white;
+}
+
+#myModal {
+  /*width: 400px;*/
+}
+
+.colorButtons {
+  height: 50px;
+  width: 50px;
+  border:1px solid #ccc;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 7px;
 }
 
 #tableScroller {
