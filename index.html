@@ -5,7 +5,8 @@
         <!-- Calls to CSS Stylesheets -->
         <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet" type="text/css">
-
+        <link href="css/colorpicker.css" rel="stylesheet" type="text/css">
+        
         <!-- The main script is the entry point for the application -->
         <script data-main="js/main" src="lib/require/require.js"></script>
         <!--<script src="http://d3js.org/d3.v3.min.js"></script>
@@ -18,6 +19,13 @@
       <div id="1" class="container">
         <div id="ph" class="page-header">
           <h2>Bar Graph</h2>
+
+          <div class="input-append color" data-color="rgb(255, 146, 180)" data-color-format="rgb" id="cp3">
+				<input type="text" class="span2" value="" readonly="">
+				<span class="add-on"><i style="background-color: rgb(255, 146, 180)"></i></span>
+			</div>
+
+      <div class="colorpicker dropdown-menu" style="display: block; top: 603px; left: 408px;"><div class="colorpicker-saturation" style="background-color: rgb(255, 0, 80);"><i style="left: 100px; top: 0px;"><b></b></i></div><div class="colorpicker-hue"><i style="top: 5.19878px;"></i></div><div class="colorpicker-alpha"><i style="top: 0px;"></i></div><div class="colorpicker-color" style="display: none;"><div></div></div></div>
 
           <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-lg" id="modalButton" data-toggle="modal" data-target="#myModal">
@@ -34,6 +42,43 @@
               </div>
               <div class="modal-body" id="mod-body">
 
+                <div class="colorpicker dropdown-menu">
+                  <div class="colorpicker-saturation" style="background-color: rgb(143, 255, 0);">
+                    <i style="left: 100px; top: 0px;"><b></b></i>
+                  </div>
+                  <div class="colorpicker-hue"><i style="top: 76.0131px;"></i>
+                  </div>
+                  <div class="colorpicker-alpha">
+                    <i style="top: 0px;"></i>
+                  </div>
+                  <div class="colorpicker-color">
+                    <div style="background-color: rgb(143, 255, 0);">
+                    </div>
+                  </div>
+                </div>
+
+                <!--<div class="input-append color" data-color="rgb(255, 146, 180)" data-color-format="rgb">
+                  <input type="text" class="span2" value="color" >
+                  <span class="add-on"><i style="background-color: rgb(255, 146, 180)"></i></span>
+                </div>-->
+
+                <!--<div class="colorpicker dropdown-menu alpha" style="display: block; top: 474px; left: 269px;">-->
+                <div class="colorpicker dropdown-menu alpha" style="display: block; top: 474px; left: 269px;">
+                  <div class="colorpicker-saturation" style="background-color: rgb(0, 195, 255);">
+                    <i style="left: 100px; top: 100px;"><b></b></i>
+                  </div>
+                  <div class="colorpicker-hue">
+                    <i style="top: 46.1111px; left: 0px;"></i>
+                  </div>
+                  <div class="colorpicker-alpha" style="background-color: rgb(0, 0, 0);">
+                    <i style="top: 43px;"></i>
+                  </div>
+                  <div class="colorpicker-color">
+                    <div style="background-color: rgba(0, 0, 0, 0.568627);">
+                    </div>
+                  </div>
+                </div>
+
                 <div class="dropdown" style="float: right;">
                   <button id="dLabel" type="button" data-toggle="dropdown" class="btn btn-primary" aria-haspopup="true" aria-expanded="false">
                     Colors
@@ -42,7 +87,11 @@
                   <ul class="dropdown-menu" aria-labelledby="dLabel">
                     <div class="colorButtons" style="background-color: steelblue; float: left;">
                     </div>
-                    <div class="colorButtons" style="background-color: red; float: right;">
+                    <div class="colorButtons" id="redButton" style="background-color: red; float: right;">
+                    </div>
+                    <div class="colorButtons" style="background-color: yellow; float: left;">
+                    </div>
+                    <div class="colorButtons" style="background-color: green; float: right;">
                     </div>
                   </ul>
                 </div>

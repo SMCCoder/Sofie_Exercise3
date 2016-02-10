@@ -6,11 +6,11 @@ The code to create a moving bar graph.
 
 Clone this repository
 ```
-git clone https://github.com/Zsailer/d3app
+git clone https://github.com/SMCCoder/d3bar-app.git
 ```
 then download the submodules.
 ```
-cd d3app
+cd d3bar-app
 git submodule init
 git submodule update
 ```

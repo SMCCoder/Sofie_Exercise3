@@ -108,6 +108,18 @@ define([
       },
 
       bar_color: function() {
+
+        this.color_button = $("<div>")
+              .attr("style", "width: 60; height: 60; background-color: gray;");
+
+        //$('.colorpicker').colorpicker();
+
+        $('#redButton').click(function() {
+
+          d3.selectAll(".bar").transition()
+              .style("fill", "red");
+
+        });
         /*$("[data-toggle='popover']").popover('show');
         $('.bar').hover(function() {
           d3.select(this).transition()
@@ -144,7 +156,11 @@ define([
           barUpdate.selectAll("rect")
             .attr("y", function(d) { return scope.y(d.value); })
             .attr("height", function(d) { return height - scope.y(d.value); })
-            .attr("width", scope.x.rangeBand());
+            .attr("width", scope.x.rangeBand())
+            .attr("background-color", "red");
+
+          barUpdate.selectAll(".bar")
+            .attr("fill", "green");
 
           //scope.tableChart(random_values(scope.model.get("data")));
 
@@ -338,6 +354,7 @@ define([
       this.bar_color();
       this.values();
       this.modal();
+      //this.table();
       //this.tableChart();
     },
 
