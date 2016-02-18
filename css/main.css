@@ -3,6 +3,7 @@
 Add main CSS here
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 */
 body {
   position: relative;
@@ -128,9 +129,6 @@ th {
   float:right;
 }
 
-#settingsButton {
-}
-
 #tableHeader {
   background-color: steelblue;
   color: white;
@@ -160,6 +158,3 @@ box-shadow: inset 9px -8px 16px -4px rgba(0,0,0,0.75);*/
 /*.letters:hover {
   background-color: brown;
 }*/
-=======
-*/
->>>>>>> parent of 74ef986... Created a funtioning bar graph that changes height
