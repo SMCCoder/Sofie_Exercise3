@@ -23,13 +23,16 @@
         <div id="ph" class="page-header">
           <h2>Bar Graph</h2>
 
-          <div class="input-append color" data-color="rgb(255, 146, 180)" data-color-format="rgb" id="cp3">
+          <input type="text" id="text" value="some text">
+          <p id="ptext"></p>
+
+          <!--<div class="input-append color" data-color="rgb(255, 146, 180)" data-color-format="rgb" id="cp3">
 				<input type="text" class="span2" value="" readonly="">
 				<span class="add-on"><i style="background-color: rgb(255, 146, 180)"></i></span>
-			</div>
+			</div>-->
 
-      <div class="colorpicker dropdown-menu" style="display: block; top: 603px; left: 408px;"><div class="colorpicker-saturation" style="background-color: rgb(255, 0, 80);"><i style="left: 100px; top: 0px;"><b></b></i></div><div class="colorpicker-hue"><i style="top: 5.19878px;"></i></div><div class="colorpicker-alpha"><i style="top: 0px;"></i></div><div class="colorpicker-color" style="display: none;"><div></div></div></div>
-
+      <!--<div class="colorpicker dropdown-menu" style="display: block; top: 603px; left: 408px;"><div class="colorpicker-saturation" style="background-color: rgb(255, 0, 80);"><i style="left: 100px; top: 0px;"><b></b></i></div><div class="colorpicker-hue"><i style="top: 5.19878px;"></i></div><div class="colorpicker-alpha"><i style="top: 0px;"></i></div><div class="colorpicker-color" style="display: none;"><div></div></div></div>
+-->
           <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-lg" id="modalButton" data-toggle="modal" data-target="#myModal">
           <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
@@ -45,7 +48,7 @@
               </div>
               <div class="modal-body" id="mod-body">
 
-                <div class="colorpicker dropdown-menu">
+                <!--<div class="colorpicker dropdown-menu">
                   <div class="colorpicker-saturation" style="background-color: rgb(143, 255, 0);">
                     <i style="left: 100px; top: 0px;"><b></b></i>
                   </div>
@@ -58,7 +61,7 @@
                     <div style="background-color: rgb(143, 255, 0);">
                     </div>
                   </div>
-                </div>
+                </div>-->
 
                 <!--<div class="input-append color" data-color="rgb(255, 146, 180)" data-color-format="rgb">
                   <input type="text" class="span2" value="color" >
@@ -88,13 +91,13 @@
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dLabel">
-                    <div class="colorButtons" style="background-color: steelblue; float: left;">
+                    <div class="colorButtons" id="blueButton" style="background-color: steelblue; float: left;">
                     </div>
                     <div class="colorButtons" id="redButton" style="background-color: red; float: right;">
                     </div>
-                    <div class="colorButtons" style="background-color: yellow; float: left;">
+                    <div class="colorButtons" id="yellowButton" style="background-color: yellow; float: left;">
                     </div>
-                    <div class="colorButtons" style="background-color: green; float: right;">
+                    <div class="colorButtons" id="greenButton" style="background-color: green; float: right;">
                     </div>
                   </ul>
                 </div>

@@ -115,10 +115,23 @@ define([
         //$('.colorpicker').colorpicker();
 
         $('#redButton').click(function() {
-
           d3.selectAll(".bar").transition()
               .style("fill", "red");
+        });
 
+        $('#blueButton').click(function() {
+          d3.selectAll(".bar").transition()
+              .style("fill", "steelblue");
+        });
+
+        $('#greenButton').click(function() {
+          d3.selectAll(".bar").transition()
+              .style("fill", "green");
+        });
+
+        $('#yellowButton').click(function() {
+          d3.selectAll(".bar").transition()
+              .style("fill", "yellow");
         });
         /*$("[data-toggle='popover']").popover('show');
         $('.bar').hover(function() {
@@ -145,8 +158,9 @@ define([
           return d;
         }
 
-      $('#test_button').click(/*random_values(scope.model.get("data")), */function() {
-          //console.log(random_values(scope.model.get("data")));
+      $('#test_button').click(random_values(scope.model.get("data")), function() {
+          //var newData = random_values(scope.model.get("data"));
+          console.log(random_values(scope.model.get("data")));
           var barUpdate = scope.chart.data(random_values(scope.model.get("data")))
             .transition()
             .duration(2000)
@@ -157,10 +171,15 @@ define([
             .attr("y", function(d) { return scope.y(d.value); })
             .attr("height", function(d) { return height - scope.y(d.value); })
             .attr("width", scope.x.rangeBand())
-            .attr("background-color", "red");
 
-          barUpdate.selectAll(".bar")
-            .attr("fill", "green");
+          var tableUpdate = scope.chart.data(random_values(scope.model.get("data")))
+            .transition();
+
+          tableUpdate.selectAll("td")
+            .attr("value", "r");
+
+          /*barUpdate.selectAll(".bar")
+            .attr("fill", "green");*/
 
           //scope.tableChart(random_values(scope.model.get("data")));
 
@@ -176,7 +195,8 @@ define([
       //var scope = this;
 
         // Create dataMenu object for dropdown menu.
-        var dataMenu = function() {}
+        var dataMenu = function(newData) {}
+        //console.log(newData);
 
         dataMenu.prototype.add_element = function(element, values) {
             //
@@ -185,17 +205,26 @@ define([
             //console.log(values +1);
             //values = 2;
 
+            console.log(values);
+
             $("#test_button").click(function() {
                 //console.log(label);
             });
 
             this.valueInput = $("<input>").attr("type", "text")
+                                .attr("id", "input" + values)
                                 .attr("value", values)
                                 .attr("style", "border: none; background-color: rgba(255, 255, 255, 0.0)");
 
             this.elementInput = $("<input>").attr("type", "text")
+                                .attr("id", "input" + element)
                                 .attr("value", element)
                                 .attr("style", "border: none; background-color: rgba(255, 255, 255, 0.0)");
+
+            this.testInput = $("<p>")//.attr("type", "text")
+                                .attr("id", "inputtest" + values)
+                                //.attr("value", values)
+                                .attr("style", "border: none; width: 100px; background-color: rgba(255, 255, 255, 0.0)");
 
             // Construct dropdown label.
             label = $("<td>").attr("id", "tablerow-" + element).append(this.elementInput);
@@ -203,15 +232,44 @@ define([
 
             value = $("<td>").attr("id", "tablerow-" + values).append(this.valueInput);
 
+            test = $("<td>").attr("id", "test-" + values).append(this.testInput);
+
             // Construct html element here
-            html_el = $("<tr>").append(label).append(value)
+            html_el = $("<tr>").append(label).append(value).append(test)
             return html_el;
+        }
+
+        dataMenu.prototype.append_to_graph = function(elements, values) {
+          console.log(elements[0]);
+          this.vsave = [];
+          for (var i = 0; i < elements.length; i++) {
+            this.vsave.push("input"+values[i]);
+
+            console.log("#input"+values[i]);
+            //var vsave = values[i];
+
+          //console.log(this.vsave[0]);
+          //return vsave;
+
+
+            $("#"+values[i]).keyup(function(){
+              console.log(values[i]);
+              //var value = $( this ).val();
+              console.log("help")
+              //$( "#inputtest"+values[i] ).text( "s" );
+
+            });
+
+            //return vsave;
+          }
+
         }
 
         dataMenu.prototype.build_list = function(parent, elements, values){
             //
             //Append html list elements to parent html element.
             //
+            console.log(values);
 
             for (var e = 0; e < elements.length; e++) {
                 //console.log(random_values(scope.model.get("data")));
@@ -259,6 +317,17 @@ define([
 
             var drops = new dataMenu();
             drops.build_list("#tablebody", this.refs, this.values);
+
+            var toGraph = new dataMenu();
+            toGraph.append_to_graph(this.refs, this.values);
+
+            $( "#text" )
+            .keyup(function() {
+              var valu = $( this ).val();
+              console.log(valu);
+              $( "#ptext" ).text( valu );
+            })
+            .keyup();
 
     },
 
