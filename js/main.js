@@ -1,4 +1,4 @@
-/* 
+/*
 / Main script that acts as the entry point for the application
 */
 
@@ -15,10 +15,9 @@ requirejs.config({
 })
 
 // Main application single entry point
-requirejs([ 
-    'jquery', 
+requirejs([
+    'jquery',
     'd3',
-<<<<<<< HEAD
     'bootstrap',
     'js/views/modal',
     'js/model/graph',
@@ -51,9 +50,3 @@ var graph_model = new GraphModel();
 var graph_view = new GraphView({ model: graph_model });
 
 });
-=======
-],function($, d3) {
-        
-    
-});
->>>>>>> parent of 74ef986... Created a funtioning bar graph that changes height
