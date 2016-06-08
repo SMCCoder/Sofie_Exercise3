@@ -102,17 +102,27 @@
                   </ul>
                 </div>
 
-              <div class="dropdown" style="float: right;">
-                  <button id="pluscr" type="button" data-toggle="dropdown" class="btn btn-primary" aria-haspopup="true" aria-expanded="false">
+              <!--<div class="dropdown" style="float: right;">
+                  <button id="pluscr" type="button" data-toggle="dropdown" class="btn btn-primary dropdown-toggle" aria-haspopup="true" aria-expanded="true">
                     Plus
                     <span class="caret"></span>
                   </button>
-                  <ul class="dropdown-menu" aria-labelledby="dLabel">
-                    <p>Add Column</p>
-                    <p>Add Row</p>
+                  <ul class="dropdown-menu" aria-labelledby="dLabel" aria-labelledby="dropdownMenu1">
+                    <li>Add Column</li>
+                    <li>Add Row</li>
+                  </ul>
+                </div>-->
+
+                <div class="dropdown" style="float: right;">
+                  <button id="pluscr" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Plus
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="#">Add Column</a></li>
+                    <li><a href="#">Add Row</a></li>
                   </ul>
                 </div>
-
 
                   <div id="tableScroller" style="height:300px; width:350px; border:1px solid #ccc; overflow:auto; border-radius: 10px;">
                       <table id="table1" class="table table-hover">

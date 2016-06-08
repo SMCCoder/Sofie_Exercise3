@@ -44,8 +44,37 @@ define ([
         {name: "X",	       value: .00150},
         {name: "Y",      	 value: .01974},
         {name: "Z",	       value: .00074}]
-      })
-    }
+      },
+      {"data2": [
+        {name: "A",	       value: .432},
+        {name: "B",	       value: .0592},
+        {name: "C",      	 value: .08782},
+        {name: "D",	       value: .09253},
+        {name: "E",	       value: .0702},
+        {name: "F",      	 value: .07428},
+        {name: "G",	       value: .04015},
+        {name: "H",	       value: .08094},
+        {name: "I",    	   value: .01966},
+        {name: "J",	       value: .05153},
+        {name: "K",    	   value: .02772},
+        {name: "L",  	     value: .06025},
+        {name: "M",      	 value: .08406},
+        {name: "N",    	   value: .09749},
+        {name: "O",	       value: .02507},
+        {name: "P",	       value: .07929},
+        {name: "Q",	       value: .02095},
+        {name: "R",      	 value: .09987},
+        {name: "S",	       value: .06327},
+        {name: "T",	       value: .04056},
+        {name: "U",      	 value: .05758},
+        {name: "V",	       value: .07978},
+        {name: "W",	       value: .08360},
+        {name: "X",	       value: .00150},
+        {name: "Y",      	 value: .01974},
+        {name: "Z",	       value: .02074}]
+      }
+
+    )}
 
   });
 
